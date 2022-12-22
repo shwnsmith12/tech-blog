@@ -26,3 +26,20 @@ const sess = {
       db: sequelize
     })
   };
+
+app.use(session(sess));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')));
+  
+// Using Handlebars as Default Template
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
+  
+// Turing on the Routes
+app.use(routes);
+  
+// Connection to the Database & Server
+sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () => console.log('Now listening!'));
+});
