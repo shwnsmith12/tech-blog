@@ -6,7 +6,7 @@ const path = require('path');
 // Importing Helper Function
 const helpers = require('./utils/helpers');
 
-// Importing Handlebars
+// Importing Handlebars w/ custom helpers
 const exphbs = require('express-handlebars');
 const hbs = exphbs.create({helpers});
 
